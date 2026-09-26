@@ -91,7 +91,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+-- (Fork-Anpassung: MesloLGS Nerd Font ist im Terminal gesetzt, s. Ghostty-Config)
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 --  See `:help vim.o`
@@ -820,11 +821,31 @@ require('lazy').setup({
     'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
+      -- Fork-Anpassung: transparente Variante -- der Hintergrund des Terminals
+      -- (z. B. Ghostty `background-opacity`) scheint durch.
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
+        style = 'night',
+        transparent = true,
         styles = {
           comments = { italic = false }, -- Disable italics in comments
+          sidebars = 'transparent',
+          floats = 'transparent',
         },
+        on_highlights = function(hl, _)
+          hl.Normal = { bg = 'NONE' }
+          hl.NormalNC = { bg = 'NONE' }
+          hl.StatusLine = { bg = 'NONE' }
+          hl.StatusLineNC = { bg = 'NONE' }
+          hl.TabLine = { bg = 'NONE' }
+          hl.TabLineFill = { bg = 'NONE' }
+          hl.WinBar = { bg = 'NONE' }
+          hl.WinBarNC = { bg = 'NONE' }
+          hl.SignColumn = { bg = 'NONE' }
+          hl.LineNr = { bg = 'NONE' }
+          hl.CursorLine = { bg = 'NONE' }
+          hl.CursorLineNr = { bg = 'NONE' }
+        end,
       }
 
       -- Load the colorscheme here.

@@ -10,6 +10,29 @@ A starting point for Neovim that is:
 
 **NOT** a Neovim distribution, but instead a starting point for your configuration.
 
+## Änderungen in diesem Fork (Branch `lazy-nvim`)
+
+Dieser Branch ist der letzte Stand **vor** der upstream-Migration auf
+`vim.pack` (Commit `cd7adee`, 2026-04-20) -- also die Version mit
+**lazy.nvim** als Plugin-Manager (`:Lazy`, `lazy-lock.json`).
+
+Anpassungen gegenüber upstream:
+
+* **Tokyo Night, transparent:** im `folke/tokyonight.nvim`-Spec setzt das
+  Setup `transparent = true` (inkl. Sidebars/Floats) plus explizite
+  `on_highlights`-Overrides für StatusLine, TabLine, WinBar, SignColumn,
+  CursorLine. Der Hintergrund bleibt durchsichtig, die Transparenz des
+  Terminals (Ghostty `background-opacity`) scheint durch.
+* **Nerd Font aktiviert:** `vim.g.have_nerd_font = true`
+  (passend zu `font-family = "MesloLGS Nerd Font"` im Ghostty-Config).
+
+Der Branch `main` enthält weiterhin die aktuelle upstream-Version mit
+`vim.pack` (Neovim >= 0.12).
+
+Deployed wird dieser Fork über die Nix-Home-Manager-Konfiguration
+(Repo [`mauf3r/nix`](https://github.com/mauf3r/nix),
+`modules/common/neovim.nix`).
+
 ## Installation
 
 ### Install Neovim
