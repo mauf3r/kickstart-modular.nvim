@@ -12,6 +12,20 @@ A starting point for Neovim that is:
 
 **NOT** a Neovim distribution, but instead a starting point for your configuration.
 
+## Änderungen in diesem Fork
+
+* **Tokyo Night, transparent:** `lua/kickstart/plugins/tokyonight.lua` setzt
+  `transparent = true` (inkl. Sidebars/Floats/Buffer) plus explizite
+  `on_highlights`-Overrides für StatusLine, TabLine, WinBar, SignColumn,
+  CursorLine. Der Hintergrund bleibt durchsichtig, die Transparenz des
+  Terminals (Ghostty `background-opacity`) scheint durch.
+* **Nerd Font aktiviert:** `vim.g.have_nerd_font = true` in `lua/options.lua`
+  (passend zu `font-family = "MesloLGS Nerd Font"` im Ghostty-Config).
+
+Deployed wird dieser Fork über die Nix-Home-Manager-Konfiguration
+(Repo [`mauf3r/nix`](https://github.com/mauf3r/nix),
+`modules/common/neovim.nix`).
+
 ## Installation
 
 ### Install Neovim
